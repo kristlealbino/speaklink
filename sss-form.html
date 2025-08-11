@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSS Application Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <div class="background"></div>
+  <div id="site-header"></div>
+
+  <div class="form-container">
+    <h2><i class="fa-solid fa-file-pen"></i> Submit SSS Application</h2>
+    <form id="sssForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <div class="input-wrapper">
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+          <button type="button" class="mic-btn" onclick="startVoiceInput('name')">
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+          <button type="button" class="mic-btn" onclick="startVoiceInput('email')">
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="sssNumber">SSS Number</label>
+        <div class="input-wrapper">
+          <input type="text" id="sssNumber" name="sssNumber" placeholder="Enter your SSS number" required />
+          <button type="button" class="mic-btn" onclick="startVoiceInput('sssNumber')">
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" id="voiceBtn">Submit</button>
+    </form>
+
+    <div id="result" style="display: none;">
+      <h3>Submitted Information</h3>
+      <p><strong>Name:</strong> <span id="result-name"></span></p>
+      <p><strong>Email:</strong> <span id="result-email"></span></p>
+      <p><strong>SSS Number:</strong> <span id="result-sss"></span></p>
+
+      <h3>Isinaling Impormasyon (Filipino)</h3>
+      <p><strong>Pangalan:</strong> <span id="filipino-name"></span></p>
+      <p><strong>Email:</strong> <span id="filipino-email"></span></p>
+      <p><strong>SSS Numero:</strong> <span id="filipino-sss"></span></p>
+    </div>
+
+    <div class="back">
+      <a href="sss.html">&larr; Back to SSS Info</a>
+    </div>
+  </div>
+
+  <script>
+    function startVoiceInput(fieldId) {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.start();
+
+      recognition.onresult = function (event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById(fieldId).value = transcript;
+      };
+    }
+
+    document.getElementById('sssForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const sss = document.getElementById('sssNumber').value;
+
+      document.getElementById('result-name').innerText = name;
+      document.getElementById('result-email').innerText = email;
+      document.getElementById('result-sss').innerText = sss;
+
+      document.getElementById('filipino-name').innerText = name;
+      document.getElementById('filipino-email').innerText = email;
+      document.getElementById('filipino-sss').innerText = sss;
+
+      document.getElementById('sssForm').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+    });
+  </script>
+
+  <div id="site-footer"></div>
+  <script src="header-footer.js"></script>
+</body>
+</html>

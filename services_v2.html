@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>List of Services - SpeakLink</title>
+<link href="style.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+      .card {
+          border-radius: 1rem;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+      }
+      .icon {
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+      }
+      
+  </style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/></head>
+<body><div class="background"></div><div id="site-header"></div><div class="container"><main class="container"><div class="container">
+<h1>🗂️ List of Services</h1>
+<p>Select a service to view details and the nearest office:</p> <br/>
+<button id="startListening">Start Listening</button> <br/>
+<p id="status">Waiting for voice input...</p><br/>
+<div class="flex flex-col gap-4 w-full max-w-sm">
+<div class="card bg-gradient-to-br from-blue-400 to-indigo-500 text-white p-6 flex items-center">
+<div class="icon mr-4">🏛</div>
+<p class="font-semibold text-lg"><a href="sss.html">SSS Security Benefits</a></p>
+<!-- <button onclick="window.location.href='sss.html'">SSS Security Benefits</button> -->
+</div>
+<div class="card bg-gradient-to-br from-pink-400 to-red-500 text-white p-6 flex items-center">
+<div class="icon mr-4">❤️</div>
+<p class="font-semibold text-lg"><a href="pagibig.html">Pag-IBIG Benefits</a></p>
+</div>
+<div class="card bg-gradient-to-br from-teal-400 to-green-500 text-white p-6 flex items-center">
+<div class="icon mr-4">🩺</div>
+<p class="font-semibold text-lg"><a href="philhealth.html">PhilHealth Medical Assistance</a></p>
+</div>
+</div>
+<br/>
+<button class="cancelBtn" onclick="window.location.href='index.html'">Cancel</button>
+</div><script src="voice-listener_services.js"></script></main></div><div id="site-footer"></div><script src="header-footer.js"></script></body>
+</html>
