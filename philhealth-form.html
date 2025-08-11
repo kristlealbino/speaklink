@@ -71,7 +71,18 @@
       recognition.start();
 
       recognition.onresult = function (event) {
-        const transcript = event.results[0][0].transcript;
+        let transcript = event.results[0][0].transcript;
+        if(fieldId === "email"){
+          // Normalize spoken parts for emails
+          transcript = transcript
+            .replace(/\s*(symbol\s+at|at)\s*/g, "@") // handles "symbol at" or "at"
+            .replace(/\s*@\s*/g, "@") // cleans up spaces around @
+            .replace(/\s+dot\s+/g, ".") // replaces "dot"
+            .replace(/\s+/g, ""); // remove extra spaces
+        }else if(fieldId === "sssNumber"){
+          // Normalize spoken parts for emails
+          transcript = transcript.replace(/(\d)\s+(\d)/g, "$1$2");
+        } 
         document.getElementById(fieldId).value = transcript;
       };
     }
