@@ -324,3 +324,8 @@ footer {
     .back a:hover {
       text-decoration: underline;
     }
+
+.logo {
+  height: 50px; 
+  margin-right: 10px;
+}
